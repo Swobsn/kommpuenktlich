@@ -85,6 +85,7 @@
       cursor: pointer;
       font-size: 16px;
       transition: background-color 0.3s ease;
+      display: none; /* Initially hidden */
     }
     button:hover {
       background-color: #003366;
@@ -179,6 +180,7 @@
       const bubbles = document.querySelectorAll('.chat-bubble');
       document.getElementById('answer').style.display = 'block';
       let delay = 0;
+      
       bubbles.forEach((bubble, i) => {
         setTimeout(() => {
           bubble.style.transition = 'opacity 0.5s ease';
@@ -186,6 +188,14 @@
           new Audio('https://cdn.pixabay.com/download/audio/2022/03/15/audio_4c9412a768.mp3?filename=message-notification-112611.mp3').play().catch(() => {});
         }, delay);
         delay += 800;
+
+        // Sobald die 4. Antwort gezeigt wird, erscheinen die letzten Buttons
+        if (i === 3) {
+          setTimeout(() => {
+            document.querySelector('.answers').querySelectorAll('button')[0].style.display = 'inline-block';
+            document.querySelector('.answers').querySelectorAll('button')[1].style.display = 'inline-block';
+          }, delay + 800); // Buttons erscheinen, nachdem die vierte Antwort gezeigt wurde
+        }
       });
     }
 
