@@ -182,10 +182,8 @@
       document.getElementById('answer').style.display = 'block';
       let delay = 0;
       
-      // Verzögert die Anzeige des ersten Buttons um 5 Sekunden
-      setTimeout(() => {
-        document.getElementById("first-button").style.display = 'inline-block';
-      }, 5000); // 5 Sekunden Verzögerung für den ersten Button
+      // Der erste Button erscheint sofort
+      document.getElementById("first-button").style.display = 'inline-block';
 
       bubbles.forEach((bubble, i) => {
         setTimeout(() => {
