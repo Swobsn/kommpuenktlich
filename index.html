@@ -3,21 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AVAGPT Antwort</title>
+  <title>AVAGPT | Dein Schulungscoach</title>
   <style>
     body {
       background-color: #ffffff;
       color: #003366;
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
       margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      background-color: #00549f;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
     }
     .container {
+      flex: 1;
       width: 90%;
       max-width: 700px;
+      margin: 40px auto;
       background-color: #f2f2f2;
       padding: 30px;
       border-radius: 10px;
@@ -32,7 +42,7 @@
       margin-bottom: 20px;
       min-height: 100px;
     }
-    .answer {
+    .answers {
       background-color: #dde6f2;
       padding: 20px;
       border-left: 4px solid #00549f;
@@ -40,11 +50,11 @@
       display: none;
       margin-top: 20px;
       color: #002147;
+      text-align: left;
     }
     .label {
       font-weight: bold;
       margin-bottom: 8px;
-      text-align: left;
       color: #00549f;
     }
     button {
@@ -61,23 +71,41 @@
     button:hover {
       background-color: #003366;
     }
+    footer {
+      background-color: #f2f2f2;
+      color: #777;
+      text-align: center;
+      padding: 10px;
+      font-size: 0.9rem;
+    }
   </style>
 </head>
 <body>
+  <header>
+    AVAGPT – Verlorenen Mitarbeitenden mit Rat & Tat zur Seite
+  </header>
   <div class="container">
     <div class="question">
       <div class="label">Du:</div>
       <div id="typed-text"></div>
     </div>
-    <button onclick="showAnswer()">Antwort anzeigen</button>
-    <div class="answer" id="answer">
-      <div class="label">AVAGPT:</div>
-      <div>Steh früher auf, du fauler Hund! ☕</div>
+    <button onclick="showAnswer()">Antworten anzeigen</button>
+    <div class="answers" id="answer">
+      <div class="label">AVAGPT sagt:</div>
+      <ol>
+        <li>Steh früher auf, du fauler Hund! ☕</li>
+        <li>Trödel nicht im Bad!</li>
+        <li>Leg das Handy weg bei der morgendlichen Sitzung!</li>
+        <li>Quatsch nicht erst im Büro herum!</li>
+      </ol>
     </div>
   </div>
+  <footer>
+    Powered by SPS | Designed for PKE Deutschland GmbH 🛠️
+  </footer>
 
   <script>
-    const text = "Wie krieg ich meinen Arsch pünktlich zur Schulung, drück mir vorher noch ’nen Kaffee in die Tasse – und erspar somit meinen Kollegen die Gruppentherapie in Geduld?";
+    const text = "Wie schaffe ich es, pünktlich zur Schulung zu erscheinen, mir vorher noch einen Kaffee zu machen – und meinen Kollegen die Gruppentherapie in Geduld zu ersparen?";
     const typedText = document.getElementById("typed-text");
     let index = 0;
 
