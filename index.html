@@ -222,4 +222,15 @@
     function curseUser() {
       const container = document.querySelector('.container');
       container.style.animation = 'thunderFlash 0.4s ease';
-      setTimeout(() => { container
+      setTimeout(() => { container.style.animation = ''; }, 400);
+      document.getElementById("final-response").innerHTML = "Dann hast du verkackt! AVAGPT verflucht dich auf ewig zu Montagsdiensten in der MTU. 😈";
+      new Audio('https://cdn.pixabay.com/download/audio/2022/03/11/audio_5f2f2cefb2.mp3?filename=dark-horror-transition-110879.mp3').play().catch(() => {});
+    }
+
+    window.onload = function () {
+      document.getElementById("thunder-audio").play().catch(() => {});
+      typeText();
+    };
+  </script>
+</body>
+</html>
