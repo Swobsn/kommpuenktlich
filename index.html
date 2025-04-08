@@ -20,8 +20,22 @@
       color: white;
       padding: 20px;
       text-align: center;
-      font-size: 1.5rem;
-      font-weight: bold;
+      position: relative;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      animation: pulse 1.5s infinite;
+    }
+    header p {
+      margin: 5px 0 0;
+      font-size: 1rem;
+      font-weight: normal;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
     }
     .container {
       flex: 1;
@@ -42,20 +56,20 @@
       margin-bottom: 20px;
       min-height: 100px;
     }
-    .answers {
+    .chat-bubble {
       background-color: #dde6f2;
-      padding: 20px;
-      border-left: 4px solid #00549f;
-      border-radius: 5px;
-      display: none;
-      margin-top: 20px;
       color: #002147;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 10px;
+      border-left: 4px solid #00549f;
       text-align: left;
     }
     .label {
       font-weight: bold;
       margin-bottom: 8px;
       color: #00549f;
+      text-align: left;
     }
     button {
       margin-top: 15px;
@@ -78,34 +92,55 @@
       padding: 10px;
       font-size: 0.9rem;
     }
-  </style>
+  @keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0.2; }
+  100% { opacity: 1; }
+}
+  @keyframes smoke {
+    0% { opacity: 0.2; transform: translateY(0) scale(1); }
+    50% { opacity: 0.6; transform: translateY(-10px) scale(1.1); }
+    100% { opacity: 0; transform: translateY(-20px) scale(1.2); }
+  }
+  .coffee-smoke {
+    position: absolute;
+    width: 20px;
+    height: 40px;
+    background: radial-gradient(ellipse at center, rgba(200,200,200,0.4) 0%, rgba(255,255,255,0) 70%);
+    border-radius: 50%;
+    animation: smoke 3s infinite ease-in-out;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+  }
+</style>
 </head>
 <body>
   <header>
-    AVAGPT – Verlorenen Mitarbeitenden mit Rat & Tat zur Seite
+    <h1>AVAGPT ⚡</h1>
+    <p>Direkt vom PKE-Olymp in Wien gesendet, um hilflose Mitarbeitende wieder auf den Pfad der Tugend zu bringen – und wird jeden sündigen Zuspätkommer richten und ihn auf Ewigkeiten zu Bereitschaftseinsätzen bei <span style='color: red; font-weight: bold; animation: blink 1s infinite;'>🔥 MTU 🔥</span> verdammen.</p>
   </header>
-  <div class="container">
+  <div class="container" style="position: relative;">
+    <div class="coffee-smoke"></div>
     <div class="question">
       <div class="label">Du:</div>
       <div id="typed-text"></div>
     </div>
     <button onclick="showAnswer()">Antworten anzeigen</button>
-    <div class="answers" id="answer">
+    <div class="answers" id="answer" style="display:none;">
       <div class="label">AVAGPT sagt:</div>
-      <ol>
-        <li>Steh früher auf, du fauler Hund! ☕</li>
-        <li>Trödel nicht im Bad!</li>
-        <li>Leg das Handy weg bei der morgendlichen Sitzung!</li>
-        <li>Quatsch nicht erst im Büro herum!</li>
-      </ol>
+      <div class="chat-bubble">1. Steh früher auf, du fauler Hund! ☕</div>
+      <div class="chat-bubble">2. Trödel nicht im Bad!</div>
+      <div class="chat-bubble">3. Leg das Handy weg bei der morgendlichen Sitzung!</div>
+      <div class="chat-bubble">4. Quatsch nicht erst im Büro herum!</div>
     </div>
   </div>
   <footer>
-    Powered by SPS | Designed for PKE Deutschland GmbH 🛠️
+    Powered by SPS | Designed for PKE Campus – AVASYS Basis Schulung 🛠️
   </footer>
 
   <script>
-    const text = "Wie schaffe ich es, pünktlich zur Schulung zu erscheinen, mir vorher noch einen Kaffee zu machen – und meinen Kollegen die Gruppentherapie in Geduld zu ersparen?";
+    const text = "Wie krieg ich meinen Arsch pünktlich zur Schulung, drück mir vorher noch ’nen Kaffee in die Tasse – und erspar somit meinen Kollegen die Gruppentherapie in Geduld?";
     const typedText = document.getElementById("typed-text");
     let index = 0;
 
@@ -122,6 +157,29 @@
     }
 
     window.onload = typeText;
+  </script>
+  <audio id="thunder-audio" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_7dfb5ce2cf.mp3?filename=thunderclap-112071.mp3" preload="auto"></audio>
+  <script>
+    const text = "Wie krieg ich meinen Arsch pünktlich zur Schulung, drück mir vorher noch ’nen Kaffee in die Tasse – und erspar somit meinen Kollegen die Gruppentherapie in Geduld?";
+    const typedText = document.getElementById("typed-text");
+    let index = 0;
+
+    function typeText() {
+      if (index < text.length) {
+        typedText.innerHTML += text.charAt(index);
+        index++;
+        setTimeout(typeText, 35);
+      }
+    }
+
+    function showAnswer() {
+      document.getElementById("answer").style.display = "block";
+    }
+
+    window.onload = function () {
+      document.getElementById("thunder-audio").play().catch(() => {});
+      typeText();
+    };
   </script>
 </body>
 </html>
