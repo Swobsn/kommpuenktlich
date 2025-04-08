@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FakeGPT Antwort</title>
+  <style>
+    body {
+      background-color: #343541;
+      color: #ececf1;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      width: 90%;
+      max-width: 600px;
+      background-color: #444654;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      text-align: center;
+    }
+    .question {
+      background-color: #343541;
+      padding: 15px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+    .answer {
+      background-color: #3e3f4b;
+      padding: 15px;
+      border-left: 3px solid #10a37f;
+      border-radius: 5px;
+      display: none;
+      margin-top: 20px;
+    }
+    .label {
+      font-weight: bold;
+      margin-bottom: 5px;
+      text-align: left;
+    }
+    button {
+      margin-top: 10px;
+      background-color: #10a37f;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #0e8c6b;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="question">
+      <div class="label">Du:</div>
+      <div>Wie krieg ich meinen Arsch pünktlich zur Schulung, drück mir vorher noch ’nen Kaffee in die Tasse – und erspar somit meinen Kollegen die Gruppentherapie in Geduld?</div>
+    </div>
+    <button onclick="document.getElementById('answer').style.display = 'block'">Antwort anzeigen</button>
+    <div class="answer" id="answer">
+      <div class="label">FakeGPT:</div>
+      <div>Steh früher auf, du fauler Hund! ☕</div>
+    </div>
+  </div>
+</body>
+</html>
